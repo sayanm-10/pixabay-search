@@ -9,7 +9,6 @@ export const openConnection = () => {
         
         socket.on("results-found", results => {
           //dispatch(userJoined(user)); need to return data to react app
-          console.log("Socket client heard back!");
           console.log("Final Results :", results);
         });
     

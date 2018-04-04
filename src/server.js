@@ -10,20 +10,17 @@ app.get("/", (req, res) => {
 });
 
 io.on("connection", socket => {
-    let formData;
 
     socket.on("initiate-search", data => {
-        formData = data;
-        redisPubSub.emit("research", {query: data.query});
+        redisPubSub.emit("research", { data });
     });
 
     redisPubSub.on("search-completed", (data, channel) => {
-        const results = data.results;
         
         socket.emit("results-found", {
-            user: formData.name,
-            message: formData.message,
-            results: results
+            user: data.user,
+            message: data.message,
+            results: data.results
         });
     });
 });
