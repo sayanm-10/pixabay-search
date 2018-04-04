@@ -10,10 +10,16 @@ io.on("connection", socket => {
 
     socket.on("initiate-search", data => {
         formData = data;
+        redisPubSub.emit("research", {query: data.query});
     });
 
-    socket.emit("results-found", result => {
-
+    redisPubSub.on("search-completed", (data, channel) => {
+        const results = data.results;
+        socket.emit("results-found", {
+            user: formData.name,
+            message: formData.message,
+            results: results
+        });
     });
 });
 
