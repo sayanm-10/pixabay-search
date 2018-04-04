@@ -6,9 +6,11 @@ let socket;
 export const openConnection = () => {
     return new Promise((resolve, reject) => {
         socket = io(WS_URL);
-    
-        socket.on("results-found", user => {
+        
+        socket.on("results-found", results => {
           //dispatch(userJoined(user)); need to return data to react app
+          console.log("Socket client heard back!");
+          console.log("Final Results :", results);
         });
     
         socket.on("connect", resolve);

@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { openConnection, searchPixabay } from '../utility/socket_client';
 import '../styles/search_form.css';
 
 class SearchForm extends Component {
@@ -11,10 +12,17 @@ class SearchForm extends Component {
             message: '',
             disable_name: false
         }
+        
+        openConnection();
     }
 
     onSubmit = async (e) => {
-        console.log("search called");
+        searchPixabay({
+            user: this.state.userName,
+            message: this.state.message,
+            query: this.state.searchQuery
+        });
+
         this.setState({
             searchQuery: '',
             message: '',

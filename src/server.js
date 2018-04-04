@@ -5,6 +5,10 @@ const http = require("http").createServer(app);
 const io = require("socket.io")(http);
 const redisPubSub = require('./redis_connection');
 
+app.get("/", (req, res) => {
+    res.send("Websocket is running");
+});
+
 io.on("connection", socket => {
     let formData;
 
@@ -15,6 +19,7 @@ io.on("connection", socket => {
 
     redisPubSub.on("search-completed", (data, channel) => {
         const results = data.results;
+        
         socket.emit("results-found", {
             user: formData.name,
             message: formData.message,
@@ -24,5 +29,5 @@ io.on("connection", socket => {
 });
 
 http.listen(8080, () => {
-    console.log("Server running on port 8080");
+    console.log("Websocket running on port 8080");
 });

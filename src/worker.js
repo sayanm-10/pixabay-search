@@ -16,5 +16,5 @@ const searchPixabay = async (query) => {
     let url = `${baseUrl}${queryString}`;
     let results = await axios.get(url);
 
-    return results;
+    return results.data;
 };
