@@ -7,8 +7,20 @@ class App extends Component {
         super(props);
 
         this.state = {
-            listData: []
+            listData: [],
+            noHit: false
         };
+    }
+
+    updateList(listData) {
+        if (listData.results.total > 0) {
+            this.setState({ 
+                listData: [...this.state.listData, listData],
+                noHit: false
+            });
+        } else {
+            this.setState({noHit: true});
+        }
     }
 
     render() {
@@ -16,7 +28,7 @@ class App extends Component {
             <div className="App">
                 <div className="row no-gutters">
                     <div className="search-form-container container col-xs-12 col-sm-4 col-md-4">
-                        <SearchForm updateList={listData => this.setState({ listData: [...this.state.listData, listData] })} />
+                        <SearchForm updateList={listData => this.updateList(listData)} noHit={this.state.noHit} />
                     </div>
                     <ResultList listData={this.state.listData} />
                 </div>
