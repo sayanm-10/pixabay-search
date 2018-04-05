@@ -6,11 +6,13 @@ const ResultList = (props) => {
     let resultItem;
 
 
-    if (props.listData) {
+    if (props.listData.length > 0) {
         console.log(item);
-        resultItem =  (
+        resultItem = props.listData.map(item => {
+            return (
                 <ResultItem key={item.results.hits[0].id} data={item} />
             );
+        });
     } else {
         resultItem = (
             <div>

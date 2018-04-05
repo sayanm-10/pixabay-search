@@ -7,14 +7,14 @@ class App extends Component {
         super(props);
 
         this.state = {
-            listData : null
+            listData : []
         };
     }
 
     render() {
         return (
             <div className="App">
-                <SearchForm updateList={listData => this.setState({listData})} />
+                <SearchForm updateList={listData => this.setState({listData : [...this.state.listData, listData]})} />
                 <ResultList listData={this.state.listData} />
             </div>
         );
