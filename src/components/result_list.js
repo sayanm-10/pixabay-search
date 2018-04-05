@@ -2,14 +2,15 @@ import React from 'react';
 import ResultItem from './result_item';
 
 const ResultList = (props) => {
+    const item = props.listData; 
     let resultItem;
 
+
     if (props.listData) {
-        resultItem = props.listData.map(datum => {
-            return (
-                <ResultItem key={datum.results.hits[0].id} details={datum} />
+        console.log(item);
+        resultItem =  (
+                <ResultItem key={item.results.hits[0].id} data={item} />
             );
-        });
     } else {
         resultItem = (
             <div>

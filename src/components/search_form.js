@@ -14,9 +14,10 @@ class SearchForm extends Component {
         }
         
         //openConnection();
-        openConnection((err, listData) => this.setState({ 
-            listData: listData.results 
-          }));
+        // openConnection((err, listData) => this.setState({ 
+        //     listData: listData.results 
+        // }));
+        openConnection((err, listData) => this.props.updateList(listData.results));
     }
 
     onSubmit = async (e) => {
