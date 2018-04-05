@@ -13,7 +13,10 @@ class SearchForm extends Component {
             disable_name: false
         }
         
-        openConnection();
+        //openConnection();
+        openConnection((err, listData) => this.setState({ 
+            listData: listData.results 
+          }));
     }
 
     onSubmit = async (e) => {
