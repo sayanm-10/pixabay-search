@@ -4,12 +4,17 @@
 .card {
     margin: 0 auto;
     max-width: 386px;
+    max-height: 300px;
 }
 .card:hover {
     box-shadow: 0 0 6px rgba(35, 173, 255, 1);
 }
 .card-text {
     margin-top: 10px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    width: 100%;
+    overflow: hidden;
 }
 .card-img-top {
     height: 150px;

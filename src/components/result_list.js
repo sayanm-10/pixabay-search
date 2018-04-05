@@ -7,7 +7,6 @@ const ResultList = (props) => {
 
 
     if (props.listData.length > 0) {
-        console.log(item);
         resultItem = props.listData.map(item => {
             return (
                 <ResultItem key={item.results.hits[0].id} data={item} />
@@ -15,17 +14,17 @@ const ResultList = (props) => {
         });
     } else {
         resultItem = (
-            <div>
+            <h1 className="no-results">
                 Results will appear here!
-            </div>
+            </h1>
         );
     }
 
 
     return (
-            <div className="result-list-container container row col-xs-12 col-sm-8 col-md-9">
-                { resultItem }
-            </div>
+        <div className="result-list-container container row col-xs-12 col-sm-8 col-md-8">
+            { resultItem }
+        </div>
     );
 };
 

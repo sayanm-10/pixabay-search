@@ -13,10 +13,6 @@ class SearchForm extends Component {
             disable_name: false
         }
         
-        //openConnection();
-        // openConnection((err, listData) => this.setState({ 
-        //     listData: listData.results 
-        // }));
         openConnection((err, listData) => this.props.updateList(listData.results));
     }
 
@@ -37,33 +33,28 @@ class SearchForm extends Component {
 
     render() {
         return (
-            <div>
-                <div className="search-form-container">
-                    <form onSubmit={this.onSubmit} className="">
-                        <div className="form-group">
-                            <label htmlFor="name">User Name</label>
-                            <input type="text" maxLength="15" className="form-control user-name-ip" 
-                            placeholder="Enter user name" id="name" 
-                            value={this.state.userName} disabled={this.state.disable_name}  
-                            onChange={e => this.setState({userName: e.target.value})} />
-                        </div>
-                        <div className="form-group">
-                            <label htmlFor="Search">Search Query</label>
-                            <input type="text" className="form-control"
-                            placeholder="Search for an image" id="search"
-                            value={this.state.searchQuery} onChange={e => this.setState({searchQuery: e.target.value})} />
-                        </div>
-                        <div className="form-group">
-                            <label htmlFor="message">Message</label>
-                            <textarea rows="2" className="form-control" 
-                            placeholder="What's your message?" id="message"
-                            value={this.state.message}onChange={e => this.setState({message: e.target.value})} />
-                        </div>
-                        <button type="submit" className="btn btn-primary">Submit</button>
-                    </form>
-                </div>
-                <hr className="partition"/>
-            </div>
+                <form onSubmit={this.onSubmit} className="search-form">
+                    <div className="form-group">
+                        <label htmlFor="name">User Name</label>
+                        <input type="text" maxLength="15" className="form-control user-name-ip" 
+                        placeholder="Enter user name" id="name" 
+                        value={this.state.userName} disabled={this.state.disable_name}  
+                        onChange={e => this.setState({userName: e.target.value})} />
+                    </div>
+                    <div className="form-group">
+                        <label htmlFor="Search">Search Query</label>
+                        <input type="text" className="form-control"
+                        placeholder="Search for an image" id="search"
+                        value={this.state.searchQuery} onChange={e => this.setState({searchQuery: e.target.value})} />
+                    </div>
+                    <div className="form-group">
+                        <label htmlFor="message">Message</label>
+                        <textarea rows="2" className="form-control" 
+                        placeholder="What's your message?" id="message"
+                        value={this.state.message}onChange={e => this.setState({message: e.target.value})} />
+                    </div>
+                    <button type="submit" className="btn btn-primary">Submit</button>
+                </form>
         );
     }
 }

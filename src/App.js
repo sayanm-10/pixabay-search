@@ -7,15 +7,19 @@ class App extends Component {
         super(props);
 
         this.state = {
-            listData : []
+            listData: []
         };
     }
 
     render() {
         return (
             <div className="App">
-                <SearchForm updateList={listData => this.setState({listData : [...this.state.listData, listData]})} />
-                <ResultList listData={this.state.listData} />
+                <div className="row no-gutters">
+                    <div className="search-form-container container col-xs-12 col-sm-4 col-md-4">
+                        <SearchForm updateList={listData => this.setState({ listData: [...this.state.listData, listData] })} />
+                    </div>
+                    <ResultList listData={this.state.listData} />
+                </div>
             </div>
         );
     }
